@@ -7,7 +7,7 @@ router.get('/', async (request, response) => {
         const allUsers = await users.getAll()
         response.json({
             success: true,
-            message: 'Here are all the users yo',
+            message: 'Get all users',
             data: {
                 allUsers
             }
@@ -16,7 +16,7 @@ router.get('/', async (request, response) => {
         response.status(400)
         response.json({
             success: false,
-            message: 'Error at getting the users yo',
+            message: 'Error getting all users',
             error: error.message
         })
     }
@@ -25,21 +25,21 @@ router.get('/', async (request, response) => {
 
 router.post('/', async (request, response) => {
     try {
-        const somePost = request.body
-        const posted = await posts.postOne(somePost)
-       
+        const userData = request.body
+        const newUser = await users.postOne(userData)
+    
         response.json({
             success: true,
-            message: 'There it is, your post',
+            message: 'New user Created',
             data: {
-                posted
+                newUser
             }
         })
     }catch (error){
         response.status(400)
         response.json({
             success: false,
-            message: 'Error at posting yo',
+            message: 'Error creating user',
             error: error.message
         })
     }
@@ -50,11 +50,11 @@ router.patch('/:id', async (request, response) => {
         const {id} = request.params
         const {body} = request
 
-        const updatePost = await posts.updateId(id, body)
+        const updatePost = await users.updateId(id, body)
        
         response.json({
             success: true,
-            message: 'Post updated',
+            message: 'User updated',
             data: {
                 updatePost
             }
@@ -63,7 +63,7 @@ router.patch('/:id', async (request, response) => {
         response.status(400)
         response.json({
             success: false,
-            message: 'Error at updating the post yo',
+            message: 'Error updating user',
             error: error.message
         })
     }
@@ -72,11 +72,11 @@ router.patch('/:id', async (request, response) => {
 router.delete('/:id', async (request, response) => {
     try {
         const {id} = request.params
-        const deletePost = await posts.eraseById(id)
+        const deletePost = await users.eraseById(id)
        
         response.json({
             success: true,
-            message: 'Post deleted',
+            message: 'User deleted',
             data: {
                 id
             }
@@ -85,7 +85,7 @@ router.delete('/:id', async (request, response) => {
         response.status(400)
         response.json({
             success: false,
-            message: 'Error at deleting the post yo',
+            message: 'Error deleting user',
             error: error.message
         })
     }

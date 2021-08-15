@@ -1,7 +1,7 @@
 const Post = require('../models/posts')
 
 function getAll(){
-    return Post.find()
+    return Post.find().populate("writer").populate("comments")
 }
 
 function postOne(somePost){
