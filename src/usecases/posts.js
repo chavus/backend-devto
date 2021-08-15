@@ -4,6 +4,10 @@ function getAll(){
     return Post.find().populate("writer").populate("comments")
 }
 
+function getOneById(id){
+    return Post.findById(id).populate("writer").populate("comments")
+}
+
 function postOne(somePost){
     return Post.create(somePost)
 }
@@ -18,6 +22,7 @@ function updateId(id, newData){
 
 module.exports = {
     getAll,
+    getOneById,
     postOne,
     eraseById,
     updateId
