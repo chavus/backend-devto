@@ -1,7 +1,7 @@
 const Comments = require('../models/comments')
 
 function getAll(){
-    return Comments.find()
+    return Comments.find().populate("userName")
 }
 
 function postOne(someComments){

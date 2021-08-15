@@ -7,7 +7,7 @@ router.get('/', async (request, response) => {
         const allComments = await comments.getAll()
         response.json({
             success: true,
-            message: 'Here are all the comments yo',
+            message: 'Here are all comments',
             data: {
                 allComments
             }
@@ -16,7 +16,7 @@ router.get('/', async (request, response) => {
         response.status(400)
         response.json({
             success: false,
-            message: 'Error at getting the comments yo',
+            message: 'Error getting all comments',
             error: error.message
         })
     }
@@ -30,7 +30,7 @@ router.post('/', async (request, response) => {
        
         response.json({
             success: true,
-            message: 'There it is, your comment',
+            message: 'Here is your comment',
             data: {
                 postedComment
             }
@@ -39,7 +39,7 @@ router.post('/', async (request, response) => {
         response.status(400)
         response.json({
             success: false,
-            message: 'Error at posting the comment yo',
+            message: 'Error posting comment',
             error: error.message
         })
     }
@@ -54,7 +54,7 @@ router.patch('/:id', async (request, response) => {
        
         response.json({
             success: true,
-            message: 'Post updated',
+            message: 'Comment updated',
             data: {
                 updateComment
             }
@@ -63,7 +63,7 @@ router.patch('/:id', async (request, response) => {
         response.status(400)
         response.json({
             success: false,
-            message: 'Error at updating the comment yo',
+            message: 'Error updating the comment',
             error: error.message
         })
     }
@@ -85,7 +85,7 @@ router.delete('/:id', async (request, response) => {
         response.status(400)
         response.json({
             success: false,
-            message: 'Error at deleting the comment yo',
+            message: 'Error deleting',
             error: error.message
         })
     }

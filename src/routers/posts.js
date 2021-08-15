@@ -7,7 +7,7 @@ router.get('/', async (request, response) => {
         const allPosts = await posts.getAll()
         response.json({
             success: true,
-            message: 'Here are all the posts yo',
+            message: 'Here are all the posts',
             data: {
                 allPosts
             }
@@ -16,7 +16,7 @@ router.get('/', async (request, response) => {
         response.status(400)
         response.json({
             success: false,
-            message: 'Error at getting the posts yo',
+            message: 'Error getting all posts',
             error: error.message
         })
     }
@@ -30,7 +30,7 @@ router.post('/', async (request, response) => {
        
         response.json({
             success: true,
-            message: 'There it is, your post',
+            message: 'Here is your post',
             data: {
                 posted
             }
@@ -39,7 +39,7 @@ router.post('/', async (request, response) => {
         response.status(400)
         response.json({
             success: false,
-            message: 'Error at posting yo',
+            message: 'Error creatint posting',
             error: error.message
         })
     }
@@ -63,7 +63,7 @@ router.patch('/:id', async (request, response) => {
         response.status(400)
         response.json({
             success: false,
-            message: 'Error at updating the post yo',
+            message: 'Error updating the post',
             error: error.message
         })
     }
@@ -85,7 +85,7 @@ router.delete('/:id', async (request, response) => {
         response.status(400)
         response.json({
             success: false,
-            message: 'Error at deleting the post yo',
+            message: 'Error deleting the post',
             error: error.message
         })
     }
