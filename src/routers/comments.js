@@ -1,22 +1,22 @@
 const express = require('express')
-const posts = require('../usecases/posts')
+const comments = require('../useCases/comments')
 const router = express.Router()
 
 router.get('/', async (request, response) => {
     try {
-        const allPosts = await posts.getAll()
+        const allComments = await comments.getAll()
         response.json({
             success: true,
-            message: 'Here are all the posts yo',
+            message: 'Here are all the comments yo',
             data: {
-                allPosts
+                allComments
             }
         })
     }catch (error){
         response.status(400)
         response.json({
             success: false,
-            message: 'Error at getting the posts yo',
+            message: 'Error at getting the comments yo',
             error: error.message
         })
     }
@@ -25,21 +25,21 @@ router.get('/', async (request, response) => {
 
 router.post('/', async (request, response) => {
     try {
-        const somePost = request.body
-        const posted = await posts.postOne(somePost)
+        const someComment = request.body
+        const postedComment = await comments.postOne(someComment)
        
         response.json({
             success: true,
-            message: 'There it is, your post',
+            message: 'There it is, your comment',
             data: {
-                posted
+                postedComment
             }
         })
     }catch (error){
         response.status(400)
         response.json({
             success: false,
-            message: 'Error at posting yo',
+            message: 'Error at posting the comment yo',
             error: error.message
         })
     }
@@ -50,20 +50,20 @@ router.patch('/:id', async (request, response) => {
         const {id} = request.params
         const {body} = request
 
-        const updatePost = await posts.updateId(id, body)
+        const updateComment = await comments.updateId(id, body)
        
         response.json({
             success: true,
             message: 'Post updated',
             data: {
-                updatePost
+                updateComment
             }
         })
     }catch (error){
         response.status(400)
         response.json({
             success: false,
-            message: 'Error at updating the post yo',
+            message: 'Error at updating the comment yo',
             error: error.message
         })
     }
@@ -72,11 +72,11 @@ router.patch('/:id', async (request, response) => {
 router.delete('/:id', async (request, response) => {
     try {
         const {id} = request.params
-        const deletePost = await posts.eraseById(id)
+        const deleteComment = await comments.eraseById(id)
        
         response.json({
             success: true,
-            message: 'Post deleted',
+            message: 'Comment deleted',
             data: {
                 id
             }
@@ -85,7 +85,7 @@ router.delete('/:id', async (request, response) => {
         response.status(400)
         response.json({
             success: false,
-            message: 'Error at deleting the post yo',
+            message: 'Error at deleting the comment yo',
             error: error.message
         })
     }

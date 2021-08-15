@@ -4,8 +4,8 @@ function getAll(){
     return Comments.find()
 }
 
-function postOne(somePost){
-    return Comments.create(somePost)
+function postOne(someComments){
+    return Comments.create(someComments)
 }
 
 function eraseById(id){

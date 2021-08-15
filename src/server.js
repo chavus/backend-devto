@@ -4,6 +4,7 @@ const server = express()
 
 
 //middlewares
+server.use(express.json())
 
 
 

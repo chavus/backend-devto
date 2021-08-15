@@ -4,8 +4,8 @@ function getAll(){
     return Users.find()
 }
 
-function postOne(somePost){
-    return Users.create(somePost)
+function postOne(someUser){
+    return Users.create(someUser)
 }
 
 function eraseById(id){
