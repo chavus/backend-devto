@@ -1,5 +1,6 @@
 const Users = require('../models/users')
 const bcrypt = require('../lib/bcrypt')
+const moment = require('../lib/moment')
 
 function getAll(){
     return Users.find()
@@ -21,7 +22,7 @@ async function postOne({name, userName, joinDate, biography, nationality, email,
     //si no existe el correo, si se guarda el registro y se encripta el passsword
     const encryptedpassword = await bcrypt.hash(password)
 
-   return Users.create({name, userName, joinDate, biography, nationality, email, password: encryptedpassword})
+   return Users.create({name, userName, joinDate : moment.getDate(), biography, nationality, email, password: encryptedpassword})
 
 }
 
