@@ -1,21 +1,15 @@
 const Post = require('../models/posts')
-const moment = require('../lib/moment')
 
 function getAll(){
     return Post.find().populate("writer").populate("comments")
 }
 
-function postOne(post){
+function getOneById(id){
+    return Post.findById(id).populate("writer").populate("comments")
+}
 
-    let { title, content, coverImage , tagsList , publishedTimestamp , readablePublishedDate , 
-           positiveReactionsCount,  readingTimeMinutes , writer, comments }  = post
-
-           publishedTimestamp = moment.getDate()
-           positiveReactionsCount = 0
-           comments =[]
-
-    return Post.create({ title, content, coverImage , tagsList , publishedTimestamp , readablePublishedDate , 
-        positiveReactionsCount,  readingTimeMinutes , writer, comments })
+function postOne(somePost){
+    return Post.create(somePost)
 }
 
 function eraseById(id){
@@ -28,6 +22,7 @@ function updateId(id, newData){
 
 module.exports = {
     getAll,
+    getOneById,
     postOne,
     eraseById,
     updateId
