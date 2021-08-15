@@ -1,5 +1,5 @@
 const express = require('express')
-const comments = require('../useCases/comments')
+const comments = require('../usecases/comments')
 const router = express.Router()
 
 router.get('/', async (request, response) => {
