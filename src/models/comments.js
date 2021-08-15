@@ -7,8 +7,8 @@ const commentsSchema = new mongoose.Schema({
     content: {
         type: String,
         minLength: 2,
-        maxLength: 50,
-        required: [true, 'Name is required'],
+        maxLength: 100,
+        required: [true, 'content is required'],
         trim: true
     },
     userName: {
