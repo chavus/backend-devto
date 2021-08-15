@@ -5,6 +5,11 @@ function getAll(){
     return Post.find().populate("writer").populate("comments")
 }
 
+
+function getOneById(id){
+    return Post.findById(id).populate("writer").populate("comments")
+}
+
 function postOne(post){
 
     let { title, content, coverImage , tagsList , publishedTimestamp , readablePublishedDate , 
@@ -28,6 +33,7 @@ function updateId(id, newData){
 
 module.exports = {
     getAll,
+    getOneById,
     postOne,
     eraseById,
     updateId
