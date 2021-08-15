@@ -1,22 +1,22 @@
 const express = require('express')
-const posts = require('../usecases/posts')
+const users = require('../usecases/users')
 const router = express.Router()
 
 router.get('/', async (request, response) => {
     try {
-        const allPosts = await posts.getAll()
+        const allUsers = await users.getAll()
         response.json({
             success: true,
-            message: 'Here are all the posts yo',
+            message: 'Here are all the users yo',
             data: {
-                allPosts
+                allUsers
             }
         })
     }catch (error){
         response.status(400)
         response.json({
             success: false,
-            message: 'Error at getting the posts yo',
+            message: 'Error at getting the users yo',
             error: error.message
         })
     }
