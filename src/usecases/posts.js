@@ -1,4 +1,5 @@
 const Post = require('../models/posts')
+const moment = require('../lib/moment')
 
 function getAll(){
     return Post.find().populate("writer").populate("comments")

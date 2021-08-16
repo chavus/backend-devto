@@ -4,10 +4,12 @@ const usersRouter = require('./routers/users')
 const commentsRouter = require('./routers/comments')
 const postsRouter = require('./routers/posts')
 const server = express()
+const cors = require('cors')
 
 
 //middlewares
 server.use(express.json())
+server.use(cors())
 
 
 //routers
