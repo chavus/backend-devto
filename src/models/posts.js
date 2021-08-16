@@ -18,7 +18,7 @@ const postsSchema = new mongoose.Schema({
         //required: true
     },
     coverImage: {
-        type: Buffer
+        type: String
        
     },
     tagsList: [{
