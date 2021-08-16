@@ -7,7 +7,7 @@ function getAll(){
 }
 
 function getOneById(id){
-    return Post.findById(id)
+    return Users.findById(id)
 }
 
 
