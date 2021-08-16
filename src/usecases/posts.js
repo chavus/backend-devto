@@ -5,10 +5,6 @@ function getAll(){
     return Post.find().populate("writer").populate("comments")
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> antonio
 function getOneById(id){
     return Post.findById(id).populate("writer").populate("comments")
 }
@@ -22,15 +18,9 @@ function postOne(post){
            positiveReactionsCount = 0
            comments =[]
 
-<<<<<<< HEAD
-           return Post.create({ title, content, coverImage , tagsList , publishedTimestamp , readablePublishedDate , 
-            positiveReactionsCount,  readingTimeMinutes , writer, comments })
-    }
-=======
     return Post.create({ title, content, coverImage , tagsList , publishedTimestamp , readablePublishedDate , 
         positiveReactionsCount,  readingTimeMinutes , writer, comments })
 }
->>>>>>> antonio
 
 function eraseById(id){
     return Post.findByIdAndDelete(id)
