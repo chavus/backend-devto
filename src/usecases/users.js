@@ -6,6 +6,11 @@ function getAll(){
     return Users.find()
 }
 
+function getOneById(id){
+    return Post.findById(id)
+}
+
+
 // function postOne(someUser){
 //     return Users.create(someUser)
 
@@ -36,6 +41,7 @@ function updateId(id, newData){
 
 module.exports = {
     getAll,
+    getOneById,
     postOne,
     eraseById,
     updateId

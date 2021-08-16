@@ -22,6 +22,27 @@ router.get('/', async (request, response) => {
     }
 })
 
+router.get('/:id', async (request, response) => {
+    try {
+        const {id} = request.params
+        const getSingleUser = await users.getOneById(id)
+
+        response.json({
+            success: true,
+            message: 'Here is the user',
+            data: {
+                getSingleUser
+            }
+        })
+    }catch (error){
+        response.status(400)
+        response.json({
+            success: false,
+            message: 'Error getting the user',
+            error: error.message
+        })
+    }
+})
 
 router.post('/', async (request, response) => {
     try {
