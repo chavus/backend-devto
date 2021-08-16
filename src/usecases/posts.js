@@ -5,10 +5,6 @@ function getAll(){
     return Post.find().populate("writer").populate("comments")
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> antonio
 function getOneById(id){
     return Post.findById(id).populate("writer").populate("comments")
 }
