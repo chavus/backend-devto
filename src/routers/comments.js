@@ -22,6 +22,27 @@ router.get('/', async (request, response) => {
     }
 })
 
+router.get('/:id', async (request, response) => {
+    try {
+        const { id } = request.params
+        const comment = await comments.getById(id)
+
+        response.json({
+            success: true,
+            message: 'Here is the post',
+            data: {
+                comment
+            }
+        })
+    }catch (error){
+        response.status(400)
+        response.json({
+            success: false,
+            message: 'Error getting a comment',
+            error: error.message
+        })
+    }
+})
 
 router.post('/', async (request, response) => {
     try {

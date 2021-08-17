@@ -27,7 +27,7 @@ function eraseById(id){
 }
 
 function updateId(id, newData){
-    return Post.findByIdAndUpdate(id, newData, {new: true})
+    return Post.findByIdAndUpdate(id, newData, {new: true}).populate("writer").populate("comments")
 }
 
 module.exports = {

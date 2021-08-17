@@ -7,12 +7,16 @@ function getAll(){
 
 function postOne(comment){
 
-    let { content, creationDate, userName, reactionsCounter  } = comment
+    let { content, userName } = comment
 
-    creationDate = moment.getDate()
-    reactionsCounter = 0
+    //const date = new Date()
+    //commentObject.creationDate = date
+    //commentObject.readableCreationDate = date.toDateString().split(" ").slice(1,3).join(" ")
+    const creationDate = new Date()  //moment.getDate()
+    const readableCreationDate = creationDate.toDateString().split(" ").slice(1,3).join(" ")
+    const reactionsCounter = 0
 
-    return Comments.create({content, creationDate, userName, reactionsCounter})
+    return Comments.create({content, creationDate, userName, reactionsCounter, readableCreationDate})
 }
 
 function eraseById(id){
@@ -23,9 +27,14 @@ function updateId(id, newData){
     return Comments.findByIdAndUpdate(id, newData, {new: true})
 }
 
+function getById(id){
+    return Comments.findById(id).populate("userName")
+}
+
 module.exports = {
     getAll,
     postOne,
     eraseById,
-    updateId
+    updateId,
+    getById
 }
