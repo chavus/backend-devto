@@ -61,7 +61,7 @@ router.post('/', async (request, response) => {
         response.status(400)
         response.json({
             success: false,
-            message: 'Error creatint posting',
+            message: 'Error creating a post',
             error: error.message
         })
     }
