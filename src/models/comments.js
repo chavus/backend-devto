@@ -20,7 +20,9 @@ const commentsSchema = new mongoose.Schema({
         type: Date,
         required: [true, 'Join date is required']
     },
-
+    readableCreationDate:{
+        type: String
+    },
     reactionsCounter: {
         type: Number,
         min: 0
