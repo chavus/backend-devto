@@ -1,4 +1,5 @@
 // Instancias de servidor y BD
+require('dotenv').config()
 
 const server = require('./src/server')
 const dbConnect = require('./src/lib/db')
