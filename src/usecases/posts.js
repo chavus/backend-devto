@@ -6,7 +6,7 @@ function getAll(){
 }
 
 function getOneById(id){
-    return Post.findById(id).populate("writer").populate("comments")
+    return Post.findById(id).populate("writer").populate("comments").populate("userName")
 }
 
 function postOne(post){

@@ -1,8 +1,9 @@
 const express = require('express')
 const users = require('../usecases/users')
+const isAuth = require("../middlewares/auth")
 const router = express.Router()
 
-router.get('/', async (request, response) => {
+router.get('/', isAuth, async (request, response) => {
     try {
         const allUsers = await users.getAll()
         response.json({
@@ -22,7 +23,7 @@ router.get('/', async (request, response) => {
     }
 })
 
-router.get('/:id', async (request, response) => {
+router.get('/:id',isAuth, async (request, response) => {
     try {
         const {id} = request.params
         const getSingleUser = await users.getOneById(id)
@@ -66,7 +67,7 @@ router.post('/', async (request, response) => {
     }
 })
 
-router.patch('/:id', async (request, response) => {
+router.patch('/:id',isAuth, async (request, response) => {
     try {
         const {id} = request.params
         const {body} = request
@@ -90,7 +91,7 @@ router.patch('/:id', async (request, response) => {
     }
 })
 
-router.delete('/:id', async (request, response) => {
+router.delete('/:id', isAuth, async (request, response) => {
     try {
         const {id} = request.params
         const deletePost = await users.eraseById(id)

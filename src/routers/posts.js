@@ -1,6 +1,8 @@
 const express = require('express')
 const posts = require('../usecases/posts')
 const router = express.Router()
+const isAuth = require("../middlewares/auth")
+
 
 router.get('/', async (request, response) => {
     try {
@@ -45,7 +47,7 @@ router.get('/:id', async (request, response) => {
 })
 
 
-router.post('/', async (request, response) => {
+router.post('/',isAuth, async (request, response) => {
     try {
         const somePost = request.body
         const posted = await posts.postOne(somePost)
@@ -67,7 +69,7 @@ router.post('/', async (request, response) => {
     }
 })
 
-router.patch('/:id', async (request, response) => {
+router.patch('/:id', isAuth, async (request, response) => {
     try {
         const {id} = request.params
         const {body} = request
@@ -91,7 +93,7 @@ router.patch('/:id', async (request, response) => {
     }
 })
 
-router.delete('/:id', async (request, response) => {
+router.delete('/:id', isAuth, async (request, response) => {
     try {
         const {id} = request.params
         const deletePost = await posts.eraseById(id)
